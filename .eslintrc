@@ -1,6 +1,7 @@
 {
   "extends": [
     "airbnb-base",
+    "airbnb-flow",
     "plugin:prettier/recommended"
   ],
   "rules": {

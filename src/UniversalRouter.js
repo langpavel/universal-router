@@ -5,11 +5,20 @@
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE.txt file in the root directory of this source tree.
+ *
+ * @flow
  */
 
 import pathToRegexp from 'path-to-regexp'
 import matchRoute from './matchRoute'
 import resolveRoute from './resolveRoute'
+
+type Routes = {
+  path: string,
+  children: Routes,
+  parent?: null,
+};
+
 
 function isChildRoute(parentRoute, childRoute) {
   let route = childRoute
@@ -23,7 +32,7 @@ function isChildRoute(parentRoute, childRoute) {
 }
 
 class UniversalRouter {
-  constructor(routes, options = {}) {
+  constructor(routes: Routes, options = {}) {
     if (Object(routes) !== routes) {
       throw new TypeError('Invalid routes')
     }
